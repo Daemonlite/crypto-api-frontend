@@ -6,6 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Register from "./pages/Register"
 import Dashboard from "./pages/Dashboard";
 import Confirm from "./pages/Confirm";
+import Coinadd from "./pages/Coinadd";
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
       <Route path="/register" element={<Register/>}/>
       <Route path="/dashboard" element={<Dashboard/>}/>
       <Route path="/confirm_email" element={<Confirm/>}/>
+      <Route path="/add_coin" element={<Coinadd/>}/>
      </Routes>
      </BrowserRouter>
       

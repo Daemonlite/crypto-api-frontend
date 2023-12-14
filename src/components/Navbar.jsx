@@ -38,7 +38,7 @@ const Navbar = () => {
 
         {user && (
           <ul className="hidden md:flex">
-            <li className="p-4 hover:cursor-pointer">Home</li>
+            <li className="p-4 hover:cursor-pointer" onClick={()=>navigate('/dashboard')}>Home</li>
             <li className="p-4 hover:cursor-pointer">Cryptos</li>
             <li className="p-4 hover:cursor-pointer">Market </li>
           </ul>
