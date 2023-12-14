@@ -25,8 +25,6 @@ const Register = () => {
           .then((res) => {
             if (res.data.success == true) {
               toast.success("register successful");
-              localStorage.setItem("userInfo", JSON.stringify(res.data));
-              console.log(res);
               navigate("/confirm_email");
               localStorage.setItem("mail",JSON.stringify(email))
             } else {

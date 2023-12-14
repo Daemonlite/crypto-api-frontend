@@ -32,9 +32,22 @@ const Confirm = () => {
         .catch((err) => console.log(err));
     };
   
+    const resendOtp = () => {
+      axios.post('http://127.0.0.1:8000/resend_otp/',{
+           email:mail
+      })
+      .then((res)=>{
+        if (res.data.success === true){
+          toast.warning('Otp sent')
+        }else{
+          toast.error(res.data.info)
+        }
+      })
+
+    }
 
   return (
-    <div className="container mx-auto mt-12">
+    <div className="container mx-auto mt-12 w-[400px]">
       <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={handleSubmit}>
         <h2 className="text-2xl font-bold mb-4">Confirm Email</h2>
         <p className='l'>An otp verification code was sent to {mail} kindly check and input the code below</p>
@@ -51,12 +64,19 @@ const Confirm = () => {
             onChange={(e) => setOtp(e.target.value)}
           />
         </div>
-        <div className="flex items-center justify-between">
+        <div className="flex items-center  justify-evenly">
           <button
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             type="submit"
           >
             Confirm
+          </button>
+          <button
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            type="submit"
+            onClick={resendOtp}
+          >
+            resend otp
           </button>
         </div>
       </form>
