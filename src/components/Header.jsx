@@ -1,20 +1,37 @@
-
+import { TypeAnimation } from "react-type-animation";
 const Header = () => {
   return (
-    <div className="w-full bg-white py-16 px-4">
-      <div className="max-w-[1240px] mx-auto grid md:grid-cols-2">
-        <img src="https://unsplash.com/photos/a-macbook-with-lines-of-code-on-its-screen-on-a-busy-desk-m_HRfLhgABo" alt="laptop" className="w-[500px] mx-auto my-4" />
-        <div className="flex flex-col justify-center">
-          <p className="text-[#00df9a] uppercase font-bold ">Data Analytics Dashboard</p>
-          <h1 className="md:text-4xl sm:text-3xl text-2xl font-bold py-2">Manage Data Analytics Centrally</h1>
-          <p className="">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod natus,
-            aut assumenda, odit magnam iure excepturi quisquam exercitationem,
-            temporibus laboriosam nihil. Numquam ipsam quibusdam fugit, optio
-            porro corrupti fuga repellat.
+    <div className="text-dark">
+      <div className="max-w-[800px] mt-[-90px] w-full h-screen mx-auto text-center flex flex-col justify-center">
+        <p className="text-gray-600 font-bold p-2">
+          MANAGE YOUR CRYPTO ASSETS AT ONE PLACE
+        </p>
+        {/* <h1 className="md:text-7xl sm:text-6xl text-4xl font-bold md:py-6"></h1> */}
+        <div className="flex justify-center items-center">
+          <p className="md:text-5xl sm:text-4xl text-xl font-bold py-4">
+            We provide support for
           </p>
-          <button className="bg-[#000300] w-[200px] rounded-md font-medium my-6 mx-auto md:mx-0 py-3 text-[#00df9a]">Get Started</button>
+          <TypeAnimation
+            className="md:text-5xl sm:text-4xl text-xl font-bold md:pl-4 pl-2"
+            sequence={["Ethereum", 2000, "Bitcoin", 2000, "Litecoin", 2000]}
+            wrapper="span"
+            speed={20}
+            //   style={{ fontSize: "2em", display: "inline-block" }}
+            repeat={Infinity}
+          />
         </div>
+        <p
+          className="md:text-2xl text-xl font-bold text-gray-500
+     "
+        >
+          Enhance financial prudence by implementing comprehensive transaction
+          monitoring across multiple wallet platforms to effectively manage and
+          mitigate expenditures..
+        </p>
+
+        <button className="bg-[#00df9a] w-[200px] rounded-md font-medium my-6 mx-auto py-3 text-black">
+          Add Coin
+        </button>
       </div>
     </div>
   );

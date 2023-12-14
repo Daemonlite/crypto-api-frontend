@@ -1,16 +1,24 @@
-import  { useContext } from "react";
-// Correct import statement
-import { Data } from "../../Context";
+// import  { useContext } from "react";
+// // Correct import statement
+// import { Data } from "../../Context";
+import Header from "../components/Header";
+import Analytics from "../components/Analytics";
 
+// import back from '../assets/back.jpg';
+// import astr from '../assets/astr.webp';
+import Footer from "../components/Footer";
 
 const Dashboard = () => {
-  const { data } = useContext(Data);
+//   const { data } = useContext(Data);
 
   return (
-    <div className="mx-auto mt-12">
-      <p className="text-[black] py-6 mx-auto my-auto">Welcome {data.username}</p>
-    </div>
+   <div >
+   <Header/>
+   <Analytics/>
+   <Footer/>
+   </div>
   );
 };
 
 export default Dashboard;
+
