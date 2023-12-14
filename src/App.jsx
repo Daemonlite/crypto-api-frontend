@@ -12,7 +12,7 @@ function App() {
   return (
     <>
      <BrowserRouter>
-     <ToastContainer position='top-center'/>
+     <ToastContainer position='bottom-left'/>
      <Navbar/>
      <Routes>
       <Route path="/" element={<Login/>}/>

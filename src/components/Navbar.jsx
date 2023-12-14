@@ -1,10 +1,12 @@
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import { useJwt } from "react-jwt";
+import { useJwt } from "react-jwt";
+import { Data } from "../../Context";
 
 const Navbar = () => {
   const [nav, setNav] = useState(true);
+  const { setData } = useContext(Data);
   const navigate = useNavigate();
 
   const user = JSON.parse(localStorage.getItem("userInfo"));
@@ -18,21 +20,14 @@ const Navbar = () => {
     navigate("/");
   };
 
-//   const token = user.access_token
-//   console.log(token)
+  const token = user?.access_token; // Use optional chaining to avoid errors if user is null
 
-//   const { decodedToken, isExpired } = useJwt(token);
-// // TODO: save the decoded token into react ccontext
-//   if (decodedToken){
-//     console.log(decodedToken)
-//   }
-//  if (isExpired){
-//     console.log(`token expired:  `)
-//     handleLogout()
-//   }else{
-//     console.log("active")
-//   }
-  
+  const { decodedToken } = useJwt(token);
+  // save the decoded token to context
+
+  if (decodedToken) {
+    setData(decodedToken);
+  }
 
   return (
     <>
@@ -84,7 +79,7 @@ const Navbar = () => {
           {user ? (
             <button
               onClick={handleLogout}
-              className="bg-[#ddd] w-[200px] rounded-md font-medium my-6 mx-auto py-3 text-black "
+              className="bg-[#ddd] w-[300px] rounded-md font-medium my-6 mx-auto py-3 text-black ml-3"
             >
               Logout
             </button>
