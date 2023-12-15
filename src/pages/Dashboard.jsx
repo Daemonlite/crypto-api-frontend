@@ -1,6 +1,4 @@
-// import  { useContext } from "react";
-// // Correct import statement
-// import { Data } from "../../Context";
+
 import Header from "../components/Header";
 import Analytics from "../components/Analytics";
 
@@ -9,7 +7,7 @@ import Analytics from "../components/Analytics";
 import Footer from "../components/Footer";
 
 const Dashboard = () => {
-//   const { data } = useContext(Data);
+
 
   return (
    <div >

@@ -2,33 +2,41 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { FaSpinner } from "react-icons/fa";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoading(true); // Set loading to true when login starts
+
     axios
       .post("http://127.0.0.1:8000/login/", {
         email,
         password,
       })
       .then((res) => {
-        if (res.data.success == true) {
-          toast.success("login successful");
+        if (res.data.success === true) {
+          toast.success("Login successful");
           localStorage.setItem("userInfo", JSON.stringify(res.data));
           console.log(res.data);
           navigate("/dashboard");
         } else {
-            toast.error(res.data.info);
+          toast.error(res.data.info);
         }
         setPassword("");
         setEmail("");
       })
-
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))
+      .finally(() => {
+        setLoading(false); // Set loading to false when login completes (whether successful or not)
+      });
+  
+    
   };
 
   return (
@@ -75,9 +83,12 @@ const Login = () => {
         </div>
 
         <button
-          className="bg-[blue]  ml-1  w-[450px] rounded-md font-medium my-6 mx-auto py-3 text-white"
+          className="bg-[blue]  ml-1  w-[450px] rounded-md font-medium my-6 mx-auto py-3 text-white relative"
           type="submit"
         >
+          {loading && (
+            <FaSpinner className="animate-spin absolute left-1/2 -ml-4 top-1/2" />
+          )}
           Login
         </button>
         <p>

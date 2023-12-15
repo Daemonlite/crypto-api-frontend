@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { FaSpinner } from "react-icons/fa";
 
 
 
@@ -11,9 +12,11 @@ const Register = () => {
     const [email,setEmail] = useState("")
     const [password,setPassword] = useState("")
     const [phonenumber,setPhonenumber] = useState("")
+    const [loading, setLoading] = useState(false);
     const navigate = useNavigate()
     const handleSubmit = (e) => {
         e.preventDefault();
+        setLoading(true)
         axios
           .post("http://127.0.0.1:8000/register/", {
             username:username,
@@ -32,7 +35,10 @@ const Register = () => {
             }
           })
     
-          .catch((err) => console.log(err));
+          .catch((err) => console.log(err))
+          .finally(() => {
+            setLoading(false); 
+          });
 
         }
     return (
@@ -131,8 +137,16 @@ const Register = () => {
             />
           </div>
   
-          <button className="bg-[blue]  ml-1  w-[450px] rounded-md font-medium my-4 mx-auto py-3 text-white " type="submit">Register</button>
-          <p className="mb-3">already have an account? <a href="/" className="text-[blue]">Login</a></p>
+          <button
+          className="bg-[blue]  ml-1  w-[450px] rounded-md font-medium my-6 mx-auto py-3 text-white relative"
+          type="submit"
+        >
+          {loading && (
+            <FaSpinner className="animate-spin absolute left-1/2 -ml-4 top-1/2" />
+          )}
+          Login
+        </button>
+          <p className="mb-3">already have an account? <a href="/" className="text-[blue]">Register</a></p>
         </form>
       </div>
     );
